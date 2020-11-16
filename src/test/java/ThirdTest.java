@@ -28,17 +28,17 @@ public class ThirdTest {
         driver.get("http://localhost/litecart");
         List<WebElement> items = driver.findElements(By.xpath(".//div[@id = 'box-most-popular']/div/ul/li/a[1]"));
         for (WebElement i : items) {
-            List<WebElement> labels = i.findElements(By.xpath(".//div[@class = 'sticker new' or @class = 'sticker sale']"));
+            List<WebElement> labels = i.findElements(By.xpath(".//div[contains (@class, 'sticker')]"));
             assertEquals(1, labels.size());
         }
         List<WebElement> items2 = driver.findElements(By.xpath(".//div[@id = 'box-campaigns']/div/ul/li/a[1]"));
         for (WebElement i : items2) {
-            List<WebElement> labels = i.findElements(By.xpath(".//div[@class = 'sticker new' or @class = 'sticker sale']"));
+            List<WebElement> labels = i.findElements(By.xpath(".//div[contains (@class, 'sticker')]"));
             assertEquals(1, labels.size());
         }
         List<WebElement> items3 = driver.findElements(By.xpath(".//div[@id = 'box-latest-products']/div/ul/li/a[1]"));
         for (WebElement i : items3) {
-            List<WebElement> labels = i.findElements(By.xpath(".//div[@class = 'sticker new' or @class = 'sticker sale']"));
+            List<WebElement> labels = i.findElements(By.xpath(".//div[contains (@class, 'sticker')]"));
             assertEquals(1, labels.size());
         }
     }
