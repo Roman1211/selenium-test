@@ -36,15 +36,15 @@ public class SecondTest {
         WebElement pass = driver.findElement(By.name("password"));
         pass.sendKeys("admin");
         driver.findElement(By.name("login")).click();
-        List<WebElement> items = driver.findElements(By.xpath(".//ul[@id = 'box-apps-menu']/li/a"));
+        List<WebElement> items = driver.findElements(By.xpath(".//ul[@id = 'box-apps-menu']/li/a")); //Список всех пунктов
         int s = items.size();
-        for (int i = 1; i <= s ; i++) {
+        for (int i = 1; i <= s ; i++) {                                                          //Проходит по каждому пункту меню
             driver.findElement(By.xpath(".//ul[@id = 'box-apps-menu']/li["+i+"]/a")).click();
             driver.findElement(By.xpath(".//h1"));
-            List<WebElement> subitems = driver.findElements(By.xpath(".//ul[@id = 'box-apps-menu']/li/ul/li"));
-            int sub = subitems.size();
-            if (sub > 0 ) {
-                for (int j = 1; j <= sub ; j++) {
+            List<WebElement> subitems = driver.findElements(By.xpath(".//ul[@id = 'box-apps-menu']/li/ul/li")); //Список подпунктов
+            int sub = subitems.size();                                                           
+            if (sub > 0 ) {                                                                                     // Провека на наличие подпунктов
+                for (int j = 1; j <= sub ; j++) {                                                               // Проходит по каждому подпункту
                     driver.findElement(By.xpath(".//ul[@id = 'box-apps-menu']/li/ul/li[" + j + "]/a")).click();
                     driver.findElement(By.xpath(".//h1"));
                 }
