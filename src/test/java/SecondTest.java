@@ -42,7 +42,7 @@ public class SecondTest {
             driver.findElement(By.xpath(".//ul[@id = 'box-apps-menu']/li["+i+"]/a")).click();
             driver.findElement(By.xpath(".//h1"));
             List<WebElement> subitems = driver.findElements(By.xpath(".//ul[@id = 'box-apps-menu']/li/ul/li")); //Список подпунктов
-            int sub = subitems.size();                                                           
+            int sub = subitems.size();
             if (sub > 0 ) {                                                                                     // Провека на наличие подпунктов
                 for (int j = 1; j <= sub ; j++) {                                                               // Проходит по каждому подпункту
                     driver.findElement(By.xpath(".//ul[@id = 'box-apps-menu']/li/ul/li[" + j + "]/a")).click();
