@@ -57,8 +57,10 @@ public class ninthTest {
             driver.navigate().back();
         }
         driver.findElement(By.xpath(".//a[contains(.,'Checkout')]")).click();
+        List <WebElement> goods  = driver.findElements(By.xpath(".//td[@class= 'item']"));
+        int j = goods.size();
 
-        for (int i = 0; i < 3;  i++) {
+        for (int i = 0; i < j;  i++) {
             List <WebElement> table  = driver.findElements(By.xpath(".//td[@class= 'item']"));
             int items = table.size();
             driver.findElement(By.xpath(".//button[@name = 'remove_cart_item']")).click();
