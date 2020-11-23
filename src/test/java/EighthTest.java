@@ -32,12 +32,12 @@ public class EighthTest {
 
     @Test
     public void fifthTest() throws IOException, InterruptedException {
-        Calendar today = new GregorianCalendar();
+        Calendar today = new GregorianCalendar();             //  плучениее  текушей  даты
         Calendar expday = new GregorianCalendar();
-        expday.add(Calendar.MONTH,1);
+        expday.add(Calendar.MONTH,1);                          //  текущая  дата +  11  месяц  
         SimpleDateFormat formatDate = new SimpleDateFormat("dd.MM.yyyy");
-        String fromdate = formatDate.format(today.getTime());
-        String todate = formatDate.format(expday.getTime());
+        String fromdate = formatDate.format(today.getTime());     //  преобразование даты в строку
+        String todate = formatDate.format(expday.getTime());      // преобразование даты в строку
         driver.get("http://localhost/litecart/admin/");
         WebElement log = driver.findElement(By.name("username"));
         log.sendKeys("admin");
@@ -46,7 +46,7 @@ public class EighthTest {
         driver.findElement(By.name("login")).click();
         driver.findElement(By.xpath(".//span[contains(.,'Catalog')]/..")).click();
         driver.findElement(By.xpath(".//a[contains(., ' Add New Product')]")).click();
-        Thread.sleep(500);
+        Thread.sleep(500);                                             // ожидание доступноости элементов
         driver.findElement(By.xpath(".//label[contains(., 'Enabled')]")).click();
         driver.findElement(By.xpath(".//input[@name= 'name[en]']")).sendKeys("Ghost Duck");
         driver.findElement(By.xpath(".//input[@name= 'code']")).sendKeys("09956");
@@ -57,7 +57,7 @@ public class EighthTest {
         quantity.sendKeys("99");
         File b = new File("./src/main/resources/duck.jpg");
         String absolute;
-        absolute = b.getCanonicalPath();
+        absolute = b.getCanonicalPath();          //  преобразооввание  относительного  пути  в абссолютный
         driver.findElement(By.xpath(".//input[@name =  'new_images[]']")).sendKeys(absolute);
         driver.findElement(By.xpath(".//input[@name =  'date_valid_from']")).sendKeys(fromdate);
         driver.findElement(By.xpath(".//input[@name =  'date_valid_to']")).sendKeys(todate);

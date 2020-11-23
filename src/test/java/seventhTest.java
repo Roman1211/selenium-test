@@ -38,7 +38,7 @@ public class seventhTest {
         String address = "Omskaya 1";
         String city = "Anchorage";
         String postCode = "99501";
-        String email = "sltest" + randNum +"@mail.ru";
+        String email = "sltest" + randNum +"@mail.ru";  // уникальнй email
         String phone = "+19991112233";
         driver.get("http://localhost/litecart");
         driver.findElement(By.xpath(".//td/a")).click();
