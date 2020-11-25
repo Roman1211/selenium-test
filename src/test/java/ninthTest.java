@@ -46,14 +46,14 @@ public class ninthTest {
         for (int i = 0; i < 3; i++) {
             driver.findElement(By.xpath(".//div[@id = 'box-most-popular']/div/ul/li")).click();
             WebElement cart = driver.findElement(By.xpath(".//span[@class = 'quantity']"));
-            String quantity = cart.getText();
+            int oldQuantity = Integer.parseInt(cart.getText());
             if (elementIsPresent(".//select[@name = 'options[Size]']")) {           // определение есть ли на странице селектор размера товара(для желтой утки)
                 WebElement sel = driver.findElement(By.xpath(".//select[@name = 'options[Size]']"));
                 Select size = new Select(sel);
                 size.selectByValue("Small");
             }
             driver.findElement(By.xpath(".//button[@name = 'add_cart_product']")).click();
-            wait.until((WebDriver driver) -> quantity.equals(cart.getText()) == false);             // ожидание обновления корзины
+            wait.until((WebDriver driver) -> Integer.parseInt(cart.getText()) - oldQuantity == 1);             // ожидание обновления корзины
             driver.navigate().back();
         }
         driver.findElement(By.xpath(".//a[contains(.,'Checkout')]")).click();
