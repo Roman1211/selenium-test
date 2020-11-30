@@ -25,7 +25,7 @@ public static class Mylistener extends AbstractWebDriverEventListener {};
         //driver = new FirefoxDriver();
         driver = new EventFiringWebDriver(new ChromeDriver());
         driver.register(new Mylistener());
-        t1Driver.set(driver);
+        //t1Driver.set(driver);
         //driver = new InternetExplorerDriver();
         //FirefoxOptions options = new FirefoxOptions().setBinary(new FirefoxBinary(new File("c:\\Program Files\\Firefox Nightly\\firefox.exe")));
         //driver = new FirefoxDriver(options);
@@ -36,7 +36,6 @@ public static class Mylistener extends AbstractWebDriverEventListener {};
 
     @Test
     public void fifthTest() throws IOException, InterruptedException {
-        //List<LogEntry> logs = driver.manage().logs().get("driver").getAll(); //запись логов в список
         driver.get("http://localhost/litecart/admin/");
         WebElement log = driver.findElement(By.name("username"));
         log.sendKeys("admin");
@@ -47,13 +46,17 @@ public static class Mylistener extends AbstractWebDriverEventListener {};
         driver.findElement(By.xpath(".//span[contains(.,'Catalog')]/..")).click();
         Thread.sleep(700);
         driver.findElement(By.xpath(".//td[3]/a")).click();
-        for (int i = 5; i <= 9; i++) {
+        List<WebElement> goods = driver.findElements(By.xpath(".//img/../a")); //получение списка товаров на странице
+        for (int i = 0; i < goods.size(); i++) {
             Thread.sleep(700);
-            driver.findElement(By.xpath(".//tr[" + i + "]/td[3]/a")).click();
-            List<LogEntry> logs = driver.manage().logs().get("client").getAll();
-            assertEquals(logs.size(), 0);            //проверка отсутствия сообшний в логе
+            List<WebElement> goods2 = driver.findElements(By.xpath(".//img/../a"));
+            goods2.get(i).click();
+            List<LogEntry> logs = driver.manage().logs().get("client").getAll(); // получение логов
+            assertEquals(logs.size(), 0);            //проверка отсутствия сообшний в логах
             driver.navigate().back();
         }
+
+
         int y = 0;
     }
 
